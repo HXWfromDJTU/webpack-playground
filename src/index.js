@@ -1,0 +1,12 @@
+
+import data from '../static/data.json'
+
+// 图片文件打包
+import '../static/imgs/nexttick_cover.png'
+import '../static/imgs/woman.jpeg'
+import '../static/imgs/man.png'
+
+// 样式文件包
+import './style/index.scss'
+
+console.log(data)
