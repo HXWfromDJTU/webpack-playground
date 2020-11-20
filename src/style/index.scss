@@ -5,4 +5,7 @@ body {
         font-size: 99px;
         background-image: url('../../static/imgs/woman.jpeg'); /* url-loader 可以直接处理css文件中的图片引用 */
     }
+
+    display: flex;
+    backface-visibility: hidden;
 }
