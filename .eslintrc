@@ -1,3 +1,9 @@
 {
-    "extends": "airbnb-base" // 如何上传自定义配置，方便在自己的项目中使用呢？
+    "extends": "airbnb-base", // 如何上传自定义配置，方便在自己的项目中使用呢？
+    "parserOptions": {
+        "parser": "babel-eslint"
+    },
+    "plugins": [
+        "syntax-dynamic-import" // 支持 ES7 动态 import语法
+     ]
 }

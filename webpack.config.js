@@ -15,7 +15,8 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractplugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const { optimize } = require('webpack');
 
 // 环境判断 package.json script脚本启动的时候使用 corss-env 去设置环境变量
 const isDev = process.env.NODE_ENV === 'development'
@@ -23,10 +24,18 @@ const isDev = process.env.NODE_ENV === 'development'
 module.exports = {
     mode: isDev ? 'development' : 'production', // 打包环境配置
 
-    entry: path.join(__dirname, '/src/index.js'), // 入口配置
+    entry: path.join(__dirname, '/src/index.js'), // 单入口配置 
+    
+    // 多入口配置
+    // entry: {
+    //     index: path.join(__dirname, '/src/index.js'),
+    //     helper: path.join(__dirname, '/src/helper/index.js'),
+    // },
 
     output: {
-        filename: 'js/built_[contenthash:8].js',  // [hash]构建哈希 [chunkhash]文件入口哈希 [contenthash]文件内容哈希 按需进行使用
+        // [hash] 构建哈希 [chunkhash]文件入口哈希 [contenthash]文件内容哈希 按需进行使用
+        // [name] 表示入口模块的名称
+        filename: 'js/[name].[contenthash:8].js',
         path: path.resolve(__dirname, 'dist'),
     },
     // 配置loader 记性功能拓展
@@ -56,7 +65,8 @@ module.exports = {
                                     ie: '9',
                                     safari: '10',
                                     edge: '17'
-                                }
+                                },
+                                modules: false // 启用 ESModule，覆盖其默认的 CommonJS模式，以便 Webpack进行 tree-shaking
                             }
                         ]
                     ],
@@ -145,7 +155,7 @@ module.exports = {
             }
         }),
         new MiniCssExtractplugin({
-            filename: 'css/built_[hash:8].css', // 对输出文件的重命名
+            filename: 'css/[name].[hash:8].css', // 对输出文件的重命名
         }),
         new OptimizeCssAssetsWebpackPlugin(), // 压缩 CSS 文件
         new CleanWebpackPlugin(), // 用于在下一次打包时清除之前打包的文件
@@ -160,7 +170,6 @@ module.exports = {
         open: true,
         hot: true, // 表示启用了 HMR (hot module replacement), 每次文件更新仅仅 reload 被修改的文件
     },
-    devtool: 'source-map'
     /* 前缀修饰
      * source-map 生成 .map 文件
      * eval ===> 表示使用eval 包裹代码
@@ -177,4 +186,14 @@ module.exports = {
      *                 ② hidden-source-map 只隐藏源代码，会提示构建后代码错误信息
      *    调试友好 ===> ① source-map
      */
+    devtool: 'source-map',
+    /**
+     * 1. 可以将 node_modules 中的代码单独打包成一个chunk最终输出
+     * 2. 自动复习多入口的chunk中，若有公共的文件，则会单独打包成一个chunk，不会重复
+     */
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }
 }
