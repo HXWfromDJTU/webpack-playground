@@ -63,14 +63,20 @@ var promiseTest = new Promise(function (resolve) {
     console.log('promise resolve');
     resolve();
   });
-}); // 使用 ES7 动态引入模块
-// eslint-disable-next-line
+}); // 使用 ES7 动态引入模块，客观效果可以实现 code-spliting
 
 __webpack_require__.e(/*! import() */ "src_constant_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./constant */ "./src/constant/index.js")).then(function (moduleConstant) {
   console.log('APP_VERSION', moduleConstant.APP_VERSION);
 }).catch(function (err) {
   console.log('APP_VERSION Loaded Failed');
-}); // 测试 treeShaking
+});
+
+document.getElementById('btn').onclick = function () {
+  __webpack_require__.e(/*! import() */ "src_utils_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./utils */ "./src/utils/index.js")).then(function (utils) {
+    utils.combine(1, 2);
+  });
+}; // 测试 treeShaking
+
 
 console.log((0,_helper__WEBPACK_IMPORTED_MODULE_1__.add)(1, 2, 4));
 console.log(_static_data_json__WEBPACK_IMPORTED_MODULE_2__, testEs6, promiseTest);
@@ -181,7 +187,7 @@ module.exports = {"test":"123123"};
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + "." + "db633806" + ".js";
+/******/ 			return "js/" + chunkId + "." + {"src_constant_index_js":"db633806","src_utils_index_js":"cb6555d4"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -277,6 +283,16 @@ module.exports = {"test":"123123"};
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/chunk prefetch function */
+/******/ 	(() => {
+/******/ 		__webpack_require__.F = {};
+/******/ 		__webpack_require__.E = (chunkId) => {
+/******/ 			Object.keys(__webpack_require__.F).map((key) => {
+/******/ 				__webpack_require__.F[key](chunkId);
+/******/ 			});
+/******/ 		}
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		var scriptUrl;
@@ -295,6 +311,16 @@ module.exports = {"test":"123123"};
 /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
 /******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
 /******/ 		__webpack_require__.p = scriptUrl + "../";
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/startup prefetch */
+/******/ 	(() => {
+/******/ 		var startup = __webpack_require__.x;
+/******/ 		__webpack_require__.x = () => {
+/******/ 			var result = startup();
+/******/ 			__webpack_require__.E("src_utils_index_js");
+/******/ 			return result;
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -352,7 +378,20 @@ module.exports = {"test":"123123"};
 /******/ 				}
 /******/ 		};
 /******/ 		
-/******/ 		// no prefetching
+/******/ 		__webpack_require__.F.j = (chunkId) => {
+/******/ 			if((!__webpack_require__.o(installedChunks, chunkId) || installedChunks[chunkId] === undefined) && true) {
+/******/ 				installedChunks[chunkId] = null;
+/******/ 				var link = document.createElement('link');
+/******/ 		
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					link.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				link.rel = "prefetch";
+/******/ 				link.as = "script";
+/******/ 				link.href = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 				document.head.appendChild(link);
+/******/ 			}
+/******/ 		};
 /******/ 		
 /******/ 		// no preloaded
 /******/ 		
@@ -436,4 +475,4 @@ module.exports = {"test":"123123"};
 /******/ 	return __webpack_require__.x();
 /******/ })()
 ;
-//# sourceMappingURL=main.3c66b34a.js.map
+//# sourceMappingURL=main.6842b7bd.js.map

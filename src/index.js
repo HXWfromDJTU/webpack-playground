@@ -35,6 +35,16 @@ import('./constant')
     console.log('APP_VERSION Loaded Failed')
 })
 
+document.getElementById('btn').onclick = () => {
+    // webpackPrefetch: true  设置允许webapck 将资源使用 <link rel="prefetch" href="xxxxx" /> 进行加载 
+    import(
+        /* webpackPrefetch: true */
+        './utils').then(utils => {
+        utils.combine(1, 2)
+    })
+}
+
+
 // 测试 treeShaking
 console.log(add(1, 2, 4));
 
