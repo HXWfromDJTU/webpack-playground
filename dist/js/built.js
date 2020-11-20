@@ -9,6 +9,20 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! namespace exports */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _static_data_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../static/data.json */ \"./static/data.json\");\n/* harmony import */ var _static_font_iconfont_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../static/font/iconfont.css */ \"./static/font/iconfont.css\");\n/* harmony import */ var _static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../static/imgs/nexttick_cover.png */ \"./static/imgs/nexttick_cover.png\");\n/* harmony import */ var _static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/imgs/woman.jpeg */ \"./static/imgs/woman.jpeg\");\n/* harmony import */ var _static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/imgs/man.png */ \"./static/imgs/man.png\");\n/* harmony import */ var _static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style/index.scss */ \"./src/style/index.scss\");\n\n\n\n// 字体样式入口\n\n\n// 图片文件打包\n\n\n\n\n// 样式文件包\n\n\nconsole.log(_static_data_json__WEBPACK_IMPORTED_MODULE_0__)\n\n//# sourceURL=webpack://webpack-playground/./src/index.js?");
+
+/***/ }),
+
 /***/ "./src/style/index.scss":
 /*!******************************!*\
   !*** ./src/style/index.scss ***!
@@ -73,20 +87,6 @@ eval("module.exports = __webpack_require__.p + \"imgs/ca8e5468f0.png\";\n\n//# s
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("module.exports = __webpack_require__.p + \"imgs/9197d8ca74.jpeg\";\n\n//# sourceURL=webpack://webpack-playground/./static/imgs/woman.jpeg?");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _static_data_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../static/data.json */ \"./static/data.json\");\n/* harmony import */ var _static_font_iconfont_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../static/font/iconfont.css */ \"./static/font/iconfont.css\");\n/* harmony import */ var _static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../static/imgs/nexttick_cover.png */ \"./static/imgs/nexttick_cover.png\");\n/* harmony import */ var _static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/imgs/woman.jpeg */ \"./static/imgs/woman.jpeg\");\n/* harmony import */ var _static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/imgs/man.png */ \"./static/imgs/man.png\");\n/* harmony import */ var _static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style/index.scss */ \"./src/style/index.scss\");\n\n\n\n// 字体样式入口\n\n\n// 图片文件打包\n\n\n\n\n// 样式文件包\n\n\nconsole.log(_static_data_json__WEBPACK_IMPORTED_MODULE_0__)\n\n//# sourceURL=webpack://webpack-playground/./src/index.js?");
 
 /***/ }),
 
