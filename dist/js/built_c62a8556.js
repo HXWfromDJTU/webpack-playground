@@ -1,11 +1,3 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is not neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -19,7 +11,35 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _static_data_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../static/data.json */ \"./static/data.json\");\n/* harmony import */ var _static_font_iconfont_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../static/font/iconfont.css */ \"./static/font/iconfont.css\");\n/* harmony import */ var _static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../static/imgs/nexttick_cover.png */ \"./static/imgs/nexttick_cover.png\");\n/* harmony import */ var _static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/imgs/woman.jpeg */ \"./static/imgs/woman.jpeg\");\n/* harmony import */ var _static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/imgs/man.png */ \"./static/imgs/man.png\");\n/* harmony import */ var _static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style/index.scss */ \"./src/style/index.scss\");\n // 字体样式入口\n\n // 图片文件打包\n\n\n\n // 样式文件包\n\n // 测试 JavaScript 代码转换测试\n// import '@babel/polyfill'; // 粗暴地直接引入整个 polyfill 会导致 JavaScript 体积过大\n\nvar testEs6 = 123;\nvar promiseTest = new Promise(function (resolve) {\n  setTimeout(function () {\n    console.log('promise resolve');\n    resolve();\n  });\n});\nconsole.log(_static_data_json__WEBPACK_IMPORTED_MODULE_0__, testEs6, promiseTest);\n\n//# sourceURL=webpack://webpack-playground/./src/index.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _static_data_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../static/data.json */ "./static/data.json");
+/* harmony import */ var _static_font_iconfont_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../static/font/iconfont.css */ "./static/font/iconfont.css");
+/* harmony import */ var _static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../static/imgs/nexttick_cover.png */ "./static/imgs/nexttick_cover.png");
+/* harmony import */ var _static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_nexttick_cover_png__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/imgs/woman.jpeg */ "./static/imgs/woman.jpeg");
+/* harmony import */ var _static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_woman_jpeg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/imgs/man.png */ "./static/imgs/man.png");
+/* harmony import */ var _static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_static_imgs_man_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style/index.scss */ "./src/style/index.scss");
+ // 字体样式入口
+
+ // 图片文件打包
+
+
+
+ // 样式文件包
+
+ // 测试 JavaScript 代码转换测试
+// import '@babel/polyfill'; // 粗暴地直接引入整个 polyfill 会导致 JavaScript 体积过大
+
+var testEs6 = 123;
+var promiseTest = new Promise(function (resolve) {
+  setTimeout(function () {
+    console.log('promise resolve');
+    resolve();
+  });
+});
+console.log(_static_data_json__WEBPACK_IMPORTED_MODULE_0__, testEs6, promiseTest);
 
 /***/ }),
 
@@ -33,7 +53,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sta
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://webpack-playground/./src/style/index.scss?");
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 
 /***/ }),
 
@@ -47,7 +69,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://webpack-playground/./static/font/iconfont.css?");
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 
 /***/ }),
 
@@ -60,7 +84,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"imgs/f0d8c1ce9d.png\";\n\n//# sourceURL=webpack://webpack-playground/./static/imgs/man.png?");
+module.exports = __webpack_require__.p + "imgs/f0d8c1ce9d.png";
 
 /***/ }),
 
@@ -73,7 +97,7 @@ eval("module.exports = __webpack_require__.p + \"imgs/f0d8c1ce9d.png\";\n\n//# s
 /*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"imgs/ca8e5468f0.png\";\n\n//# sourceURL=webpack://webpack-playground/./static/imgs/nexttick_cover.png?");
+module.exports = __webpack_require__.p + "imgs/ca8e5468f0.png";
 
 /***/ }),
 
@@ -86,7 +110,7 @@ eval("module.exports = __webpack_require__.p + \"imgs/ca8e5468f0.png\";\n\n//# s
 /*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"imgs/9197d8ca74.jpeg\";\n\n//# sourceURL=webpack://webpack-playground/./static/imgs/woman.jpeg?");
+module.exports = __webpack_require__.p + "imgs/9197d8ca74.jpeg";
 
 /***/ }),
 
@@ -101,7 +125,7 @@ eval("module.exports = __webpack_require__.p + \"imgs/9197d8ca74.jpeg\";\n\n//# 
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = {\"test\":\"123123\"};\n\n//# sourceURL=webpack://webpack-playground/./static/data.json?");
+module.exports = {"test":"123123"};
 
 /***/ })
 
@@ -210,3 +234,4 @@ eval("module.exports = {\"test\":\"123123\"};\n\n//# sourceURL=webpack://webpack
 /******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;
+//# sourceMappingURL=built_c62a8556.js.map

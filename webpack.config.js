@@ -26,8 +26,7 @@ module.exports = {
     entry: path.join(__dirname, '/src/index.js'), // 入口配置
 
     output: {
-        filename: 'js/built.js',
-        // '__dirname' 表示当前目录的绝对路径
+        filename: 'js/built_[contenthash:8].js',  // [hash]构建哈希 [chunkhash]文件入口哈希 [contenthash]文件内容哈希 按需进行使用
         path: path.resolve(__dirname, 'dist'),
     },
     // 配置loader 记性功能拓展
@@ -61,6 +60,7 @@ module.exports = {
                             }
                         ]
                     ],
+                    cacheDirectory: true  // 开启babel缓存，第二次构建的时候，会使用之前的缓存
                 }
             },
             {
@@ -145,7 +145,7 @@ module.exports = {
             }
         }),
         new MiniCssExtractplugin({
-            filename: 'css/built.css', // 对输出文件的重命名
+            filename: 'css/built_[hash:8].css', // 对输出文件的重命名
         }),
         new OptimizeCssAssetsWebpackPlugin(), // 压缩 CSS 文件
         new CleanWebpackPlugin(), // 用于在下一次打包时清除之前打包的文件

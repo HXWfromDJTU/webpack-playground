@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "cross-env NODE_ENV=development webpack", 
+    "build:dev": "cross-env NODE_ENV=development webpack",
     "build:prod": "cross-env NODE_ENV=production webpack",
-    "dev:server": "webpack serve"
+    "dev:server": "webpack serve",
+    "test-server": "node test/server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/HXWfromDJTU/webpack-playground#readme",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "express": "^4.17.1",
     "jquery": "^3.5.1"
   },
   "devDependencies": {
