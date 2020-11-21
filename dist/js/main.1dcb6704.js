@@ -1,6 +1,21 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "./static/font/iconfont.css":
+/*!**********************************!*\
+  !*** ./static/font/iconfont.css ***!
+  \**********************************/
+/*! namespace exports */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
 
 /***/ "./src/helper/index.js":
 /*!*****************************!*\
@@ -13,6 +28,7 @@
 /*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "uselessFun": () => /* binding */ uselessFun,
@@ -37,13 +53,19 @@ console.log((jquery__WEBPACK_IMPORTED_MODULE_0___default()));
   \**********************/
 /*! namespace exports */
 /*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.e, __webpack_require__.* */
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.e, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _static_data_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../static/data.json */ "./static/data.json");
-/* harmony import */ var _static_font_iconfont_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../static/font/iconfont.css */ "./static/font/iconfont.css");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helper */ "./src/helper/index.js");
+/* harmony import */ var _static_data_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/data.json */ "./static/data.json");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/_vue@2.6.12@vue/dist/vue.runtime.esm.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/_jquery@3.5.1@jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _static_font_iconfont_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../static/font/iconfont.css */ "./static/font/iconfont.css");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helper */ "./src/helper/index.js");
+
+
  // 字体样式入口
 
  // 图片文件打包
@@ -72,29 +94,28 @@ __webpack_require__.e(/*! import() */ "src_constant_index_js").then(__webpack_re
 });
 
 document.getElementById('btn').onclick = function () {
+  // webpackPrefetch: true  设置允许webapck 将资源使用 <link rel="prefetch" href="xxxxx" /> 进行加载 
   __webpack_require__.e(/*! import() */ "src_utils_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./utils */ "./src/utils/index.js")).then(function (utils) {
     utils.combine(1, 2);
   });
 }; // 测试 treeShaking
 
 
-console.log((0,_helper__WEBPACK_IMPORTED_MODULE_1__.add)(1, 2, 4));
-console.log(_static_data_json__WEBPACK_IMPORTED_MODULE_2__, testEs6, promiseTest);
+console.log((0,_helper__WEBPACK_IMPORTED_MODULE_2__.add)(1, 2, 4));
+console.log(_static_data_json__WEBPACK_IMPORTED_MODULE_3__, testEs6, promiseTest);
 
-/***/ }),
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./service-worker.js') // service-worker.js 会由 workbox-webpack-plugin 生成
+    .then(function () {
+      console.log('sw 注册成功');
+    }).catch(function () {
+      console.log('sw 注册失败');
+    });
+  });
+}
 
-/***/ "./static/font/iconfont.css":
-/*!**********************************!*\
-  !*** ./static/font/iconfont.css ***!
-  \**********************************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+console.log(vue__WEBPACK_IMPORTED_MODULE_4__.default, (jquery__WEBPACK_IMPORTED_MODULE_0___default()));
 
 /***/ }),
 
@@ -109,7 +130,34 @@ __webpack_require__.r(__webpack_exports__);
 /*! runtime requirements: module */
 /***/ ((module) => {
 
+"use strict";
 module.exports = {"test":"123123"};
+
+/***/ }),
+
+/***/ "./node_modules/_jquery@3.5.1@jquery/dist/jquery.js":
+/*!****************************************************************************************************!*\
+  !*** delegated ./node_modules/_jquery@3.5.1@jquery/dist/jquery.js from dll-reference jquery_07d0a ***!
+  \****************************************************************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module, __webpack_require__ */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = (__webpack_require__(/*! dll-reference jquery_07d0a */ "dll-reference jquery_07d0a"))(320);
+
+/***/ }),
+
+/***/ "dll-reference jquery_07d0a":
+/*!*******************************!*\
+  !*** external "jquery_07d0a" ***!
+  \*******************************/
+/*! dynamic exports */
+/*! exports [maybe provided (runtime-defined)] [no usage info] */
+/*! runtime requirements: module */
+/***/ ((module) => {
+
+"use strict";
+module.exports = jquery_07d0a;
 
 /***/ })
 
@@ -126,16 +174,13 @@ module.exports = {"test":"123123"};
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			loaded: false,
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -187,7 +232,7 @@ module.exports = {"test":"123123"};
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + "." + {"src_constant_index_js":"db633806","src_utils_index_js":"cb6555d4"}[chunkId] + ".js";
+/******/ 			return "" + chunkId + "_chunk.js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -274,15 +319,6 @@ module.exports = {"test":"123123"};
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/node module decorator */
-/******/ 	(() => {
-/******/ 		__webpack_require__.nmd = (module) => {
-/******/ 			module.paths = [];
-/******/ 			if (!module.children) module.children = [];
-/******/ 			return module;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/chunk prefetch function */
 /******/ 	(() => {
 /******/ 		__webpack_require__.F = {};
@@ -295,22 +331,7 @@ module.exports = {"test":"123123"};
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl + "../";
+/******/ 		__webpack_require__.p = "/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/startup prefetch */
@@ -335,7 +356,7 @@ module.exports = {"test":"123123"};
 /******/ 		};
 /******/ 		
 /******/ 		var deferredModules = [
-/******/ 			["./src/index.js","vendors-node_modules__jquery_3_5_1_jquery_dist_jquery_js"]
+/******/ 			["./src/index.js","vendors-node_modules__vue_2_6_12_vue_dist_vue_runtime_esm_js"]
 /******/ 		];
 /******/ 		__webpack_require__.f.j = (chunkId, promises) => {
 /******/ 				// JSONP chunk loading for javascript
@@ -475,4 +496,4 @@ module.exports = {"test":"123123"};
 /******/ 	return __webpack_require__.x();
 /******/ })()
 ;
-//# sourceMappingURL=main.6842b7bd.js.map
+//# sourceMappingURL=main.1dcb6704.js.map

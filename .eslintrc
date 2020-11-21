@@ -3,6 +3,9 @@
     "parserOptions": {
         "parser": "babel-eslint"
     },
+    "env": {
+        "browser": true
+    },
     "plugins": [
         "syntax-dynamic-import" // 支持 ES7 动态 import语法
      ]

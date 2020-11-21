@@ -1,4 +1,6 @@
 import data from '../static/data.json';
+import Vue from 'vue';
+import $ from 'jquery';
 
 // 字体样式入口
 import '../static/font/iconfont.css';
@@ -20,28 +22,28 @@ import { add } from './helper';
 
 const testEs6 = 123;
 const promiseTest = new Promise((resolve) => {
-  setTimeout(() => {
-    console.log('promise resolve');
-    resolve();
-  });
+    setTimeout(() => {
+        console.log('promise resolve');
+        resolve();
+    });
 });
 
 // 使用 ES7 动态引入模块，客观效果可以实现 code-spliting
 import('./constant')
-.then(moduleConstant => {
-    console.log('APP_VERSION', moduleConstant.APP_VERSION)
-})
-.catch(err => {
-    console.log('APP_VERSION Loaded Failed')
-})
+    .then(moduleConstant => {
+        console.log('APP_VERSION', moduleConstant.APP_VERSION)
+    })
+    .catch(err => {
+        console.log('APP_VERSION Loaded Failed')
+    })
 
 document.getElementById('btn').onclick = () => {
     // webpackPrefetch: true  设置允许webapck 将资源使用 <link rel="prefetch" href="xxxxx" /> 进行加载 
     import(
         /* webpackPrefetch: true */
         './utils').then(utils => {
-        utils.combine(1, 2)
-    })
+            utils.combine(1, 2)
+        })
 }
 
 
@@ -49,3 +51,18 @@ document.getElementById('btn').onclick = () => {
 console.log(add(1, 2, 4));
 
 console.log(data, testEs6, promiseTest);
+
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js') // service-worker.js 会由 workbox-webpack-plugin 生成
+        .then(() => {
+            console.log('sw 注册成功')
+        })
+        .catch(() => {
+            console.log('sw 注册失败')
+        })
+    })
+}
+
+console.log(Vue, $)

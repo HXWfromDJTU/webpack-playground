@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://webpack-playground/./src/constant/index.js"],"names":["APP_VERSION","APP_NAME"],"mappings":";;;;;;;;;;;;;;;;;;;AAAO,IAAMA,WAAW,GAAG,OAApB;AAEA,IAAMC,QAAQ,GAAG,mBAAjB,C","file":"src_constant_index_js_chunk.js","sourcesContent":["export const APP_VERSION = '0.0.3';\n\nexport const APP_NAME = 'WebpackPlayground';\n"],"sourceRoot":""}

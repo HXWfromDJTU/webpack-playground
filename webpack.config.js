@@ -17,6 +17,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractplugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const { optimize } = require('webpack');
+const WorkBoxWebapckPlugin = require('workbox-webpack-plugin')
+const webpack = require('webpack')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
+
+const ConsoleOnBuildWebpackPlugin = require('./custom-plugins/console-log-on-build-webpack-plugin')
 
 // 环境判断 package.json script脚本启动的时候使用 corss-env 去设置环境变量
 const isDev = process.env.NODE_ENV === 'development'
@@ -25,54 +31,31 @@ module.exports = {
     mode: isDev ? 'development' : 'production', // 打包环境配置
 
     entry: path.join(__dirname, '/src/index.js'), // 单入口配置 
-    
+
     // 多入口配置
+
+    // Array 模式  ==> 最终只会输出一 bundle 文件 (不常用)
+    // entry: [path.join(__dirname, '/src/index.js'), path.join(__dirname, '/src/helper/index.js')]
+
+    // Object 模式  ==> 最终会输出多 bundle 文件
     // entry: {
     //     index: path.join(__dirname, '/src/index.js'),
     //     helper: path.join(__dirname, '/src/helper/index.js'),
     // },
+
+    // 数组与对象模式可以组合使用
 
     output: {
         // [hash] 构建哈希 [chunkhash]文件入口哈希 [contenthash]文件内容哈希 按需进行使用
         // [name] 表示入口模块的名称
         filename: 'js/[name].[contenthash:8].js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',  // publicPath 值得是所有资源的公共路径的前缀，用于生产环境打包
+        chunkFilename: '[name]_chunk.js' // 制定非入口chunk的名称    
     },
     // 配置loader 记性功能拓展
     module: {
         rules: [
-            /* JavaScript 兼容性处理 babel0loader @babel-loader @babel/core @babel/presets
-             * 1. 基本的 JavaScript 兼容性处理，但只可以处理一些基础语法
-             * 2. @babel/polyfill 进行全量
-             * 3. 按需进行配置，而不是全量进行polyfill。所以使用 core-js
-             */
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                options: {
-                    presets: [
-                        [
-                            '@babel/preset-env',
-                            {
-                                // core-js 的文档 https://babeljs.io/docs/en/babel-core/#options
-                                useBuiltIns: 'entry', //  usage 标明使用按需加载，但与其他选项有冲突，稍后测试
-                                corejs: {
-                                    version: 3
-                                },
-                                targets: {
-                                    chrome: '60',
-                                    firefox: '60',
-                                    ie: '9',
-                                    safari: '10',
-                                    edge: '17'
-                                },
-                                modules: false // 启用 ESModule，覆盖其默认的 CommonJS模式，以便 Webpack进行 tree-shaking
-                            }
-                        ]
-                    ],
-                    cacheDirectory: true  // 开启babel缓存，第二次构建的时候，会使用之前的缓存
-                }
-            },
             {
                 test: /\.(js|ts|jsx)$/, // 检查范围+
                 enforce: 'pre', // 强制优先执行
@@ -84,6 +67,49 @@ module.exports = {
                 options: {
                     fix: true // 自动修复出现的问题
                 }
+            },
+            /* JavaScript 兼容性处理 babel0loader @babel-loader @babel/core @babel/presets
+             * 1. 基本的 JavaScript 兼容性处理，但只可以处理一些基础语法
+             * 2. @babel/polyfill 进行全量
+             * 3. 按需进行配置，而不是全量进行polyfill。所以使用 core-js
+             */
+            {
+                test: /\.js$/,
+                use: [
+                    {
+                        // 开启多进程打包 但是需要看情况进行使用，不一定比不开启时间好
+                        loader: 'thread-loader', 
+                        options: {
+                            workers: 2 // 指明启用多少个进程进行打包
+                        }
+                    }, 
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                [
+                                    '@babel/preset-env',
+                                    {
+                                        // core-js 的文档 https://babeljs.io/docs/en/babel-core/#options
+                                        useBuiltIns: 'entry', //  usage 标明使用按需加载，但与其他选项有冲突，稍后测试
+                                        corejs: {
+                                            version: 3
+                                        },
+                                        targets: {
+                                            chrome: '60',
+                                            firefox: '60',
+                                            ie: '9',
+                                            safari: '10',
+                                            edge: '17'
+                                        },
+                                        modules: false // 启用 ESModule，覆盖其默认的 CommonJS模式，以便 Webpack进行 tree-shaking
+                                    }
+                                ]
+                            ],
+                            cacheDirectory: true  // 开启babel缓存，第二次构建的时候，会使用之前的缓存
+                        }
+                    }
+                ],
             },
             {
                 oneOf: [  // 标明以下规则中，按顺序只会命中一个，而不做多个文件的检测
@@ -131,14 +157,14 @@ module.exports = {
                             outputPath: 'media'
                         }
                     },
-                    // {
-                    //     test: /\.html$/i,
-                    //     loader: 'html-loader', // 处理 html 文件中的es6模块化，使用commonjs进行解析
-                    //     options: {
-                    //         minimize: true,
-                    //         // publicPath: path.resolve(__dirname, 'dist')
-                    //     }
-                    // }
+                    {
+                        test: /\.html$/i,
+                        loader: 'html-loader', // 处理 html 文件中的es6模块化，使用commonjs进行解析
+                        options: {
+                            minimize: true,
+                            // publicPath: path.resolve(__dirname, 'dist')
+                        }
+                    }
                 ]
             }
         ]
@@ -159,6 +185,21 @@ module.exports = {
         }),
         new OptimizeCssAssetsWebpackPlugin(), // 压缩 CSS 文件
         new CleanWebpackPlugin(), // 用于在下一次打包时清除之前打包的文件
+        new webpack.DllReferencePlugin({
+            manifest: path.resolve(__dirname, 'dll/manifest.json')
+        }),
+        new AddAssetHtmlWebpackPlugin({
+            filepath: path.resolve(__dirname, 'dll/jquery.js')
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerPort: 8899
+        }),
+        // 用于创建 service-worker
+        // new WorkBoxWebapckPlugin.GenerateSW({
+        //     clientsClaim: true,
+        //     skipWaiting: true,
+        // })
+        new ConsoleOnBuildWebpackPlugin(), // 测试自定义插件
     ],
     // 开发服务器 devServer 用来运行自动化
     // 特点: 只会在内存中编译打包，不会有任何的输出
@@ -195,5 +236,9 @@ module.exports = {
         splitChunks: {
             chunks: 'all'
         }
-    }
+    },
+    // 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
+    // externals: {
+    //     jquery: 'jQuery'
+    // }
 }

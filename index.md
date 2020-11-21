@@ -21,10 +21,12 @@ plugin 的通用[参数文档](https://github.com/jantimon/html-webpack-plugin#o
         * 强制更新: 使用 【hash: 8】 【chunkhash: 12】【contenthash: 12】
     * tree shaking
         * 1. 使用 ES 6 Module （import 与 export）
-        * 2. 开启 production环境
+        * 2. 开启 production环境 默认使用 tree-shaking
         * 3. 修改 @babel/presets 的默认行为打包 CommonJS 为 ESModule
         * 4. package.json 中 设置 sideEffect 确保文件不会被 tree-shaking
         * 参考官方文档 [文档](https://webpack.docschina.org/guides/tree-shaking/)
     * 代码分割
         * 设置多入口
 * 优化代码运行的性能    
+
+
