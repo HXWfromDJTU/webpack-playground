@@ -59,6 +59,12 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(js)/,
+                use: [
+                    path.resolve(__dirname, 'source-code-playground/demo-loader')  // 使用绝对路径制定 loader  位置
+                ]
+            },
+            {
                 test: /\.(js|ts|jsx)$/, // 检查范围+
                 enforce: 'pre', // 强制优先执行
                 exclude: /(node_modules|dist)/, // 检查范围去除
