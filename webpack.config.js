@@ -24,6 +24,8 @@ const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 
 const ConsoleOnBuildWebpackPlugin = require('./custom-plugins/console-log-on-build-webpack-plugin')
 
+const ZipWebpackPlugin = require('./source-code-playground/zip-webpack-plugin')
+
 // 环境判断 package.json script脚本启动的时候使用 corss-env 去设置环境变量
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -200,6 +202,9 @@ module.exports = {
         //     skipWaiting: true,
         // })
         new ConsoleOnBuildWebpackPlugin(), // 测试自定义插件
+        new ZipWebpackPlugin({
+            filename: 'zip/offline'
+        }),
     ],
     // 开发服务器 devServer 用来运行自动化
     // 特点: 只会在内存中编译打包，不会有任何的输出
