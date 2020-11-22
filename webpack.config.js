@@ -59,6 +59,12 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(vue)/,
+                use: [
+                    path.resolve(__dirname, 'source-code-playground/vue-loader-test')  // 使用绝对路径制定 loader  位置
+                ]
+            },
+            {
                 test: /\.(js)/,
                 use: [
                     path.resolve(__dirname, 'source-code-playground/demo-loader')  // 使用绝对路径制定 loader  位置

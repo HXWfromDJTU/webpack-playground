@@ -16,6 +16,15 @@ import './style/index.scss';
 // 测试 treeShaking
 import { add } from './helper';
 
+// vue-loader-test 测试
+import VueComponent from './components/index.vue'
+
+import('./components/AsyncComponent.vue').then(AsyncComponent => {
+    console.log( AsyncComponent)
+})
+
+console.log(VueComponent)
+
 // 测试 JavaScript 代码转换测试
 
 // import '@babel/polyfill'; // 粗暴地直接引入整个 polyfill 会导致 JavaScript 体积过大

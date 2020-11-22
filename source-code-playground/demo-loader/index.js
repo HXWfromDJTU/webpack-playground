@@ -1,6 +1,6 @@
 const { sources } = require("webpack");
 
-module.exports = sources => {
-    console.log('========= Loader Demo is excuted! ==========')
+module.exports = (sources, map, meta)=> {
+    console.log('======= demo loader =======', meta)
     return sources
 }

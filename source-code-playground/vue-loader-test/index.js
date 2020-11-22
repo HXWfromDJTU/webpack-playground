@@ -6,5 +6,7 @@ module.exports = source => {
 
     const result = VueTemplateCompiler.compile(source)
 
-   return result  // 同步返回方式 2
+    console.log('========== vue-loader-test ==========')
+
+    return result.render  // 同步返回方式 2
 }
