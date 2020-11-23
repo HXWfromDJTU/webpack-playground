@@ -1,5 +1,5 @@
 # webpack-playground
-持续添加项目中的 Webpack 最佳配置......
+webpack 配置试验场，持续维护添加配置......
 
 ### buil playground
 ```bat
