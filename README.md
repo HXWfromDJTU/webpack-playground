@@ -32,3 +32,6 @@ npm run test-server
 ### plugin playground
 ✅ [zip-webpack-plugin](https://github.com/HXWfromDJTU/webpack-playground/tree/master/source-code-playground/zip-webpack-plugin)      
 
+
+### others
+![](https://raw.githubusercontent.com/HXWfromDJTU/webpack-playground/master/source-code-playground/assets/process.png)
