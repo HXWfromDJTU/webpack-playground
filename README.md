@@ -26,7 +26,7 @@ npm run test-server
 
 
 ### loader playground
-✅ [demo-loader](https://github.com/HXWfromDJTU/webpack-playground/tree/master/source-code-playground/demo-loader)
+✅ [demo-loader](https://github.com/HXWfromDJTU/webpack-playground/tree/master/source-code-playground/demo-loader)          
 ✅ [vue-loader-test](https://github.com/HXWfromDJTU/webpack-playground/tree/master/source-code-playground/vue-loader-test)
 
 ### plugin playground
