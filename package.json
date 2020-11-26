@@ -29,7 +29,9 @@
     "jquery": "^3.5.1",
     "jszip": "^3.5.0",
     "vue": "^2.6.12",
-    "vuetify": "^2.3.18"
+    "vue-router": "^3.4.9",
+    "vuetify": "^2.3.18",
+    "vuex": "^3.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

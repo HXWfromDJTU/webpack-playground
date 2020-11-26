@@ -26,6 +26,8 @@ const ConsoleOnBuildWebpackPlugin = require('./custom-plugins/console-log-on-bui
 
 const ZipWebpackPlugin = require('./source-code-playground/zip-webpack-plugin')
 
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+
 // 环境判断 package.json script脚本启动的时候使用 corss-env 去设置环境变量
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -186,6 +188,7 @@ module.exports = {
     // plugin 是拓展功能，是额外的模块，需要下载后引入再进行使用
     // 对于每一个插件 option 是通用配置 参考文档 https://github.com/jantimon/html-webpack-plugin#options
     plugins: [
+        new CleanWebpackPlugin(), // 用于在下一次打包时清除之前打包的文件
         // 自动生成html模板
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'index.html'),
@@ -198,12 +201,12 @@ module.exports = {
             filename: 'css/[name].[hash:8].css', // 对输出文件的重命名
         }),
         new OptimizeCssAssetsWebpackPlugin(), // 压缩 CSS 文件
-        new CleanWebpackPlugin(), // 用于在下一次打包时清除之前打包的文件
+        // hard-source-webpack-plugin  新的方案
         new webpack.DllReferencePlugin({
             manifest: path.resolve(__dirname, 'dll/manifest.json')
         }),
         new AddAssetHtmlWebpackPlugin({
-            filepath: path.resolve(__dirname, 'dll/jquery.js')
+            filepath: path.resolve(__dirname, 'dll/jquery_dll_.js')
         }),
         new BundleAnalyzerPlugin({
             analyzerPort: 8899
@@ -213,7 +216,8 @@ module.exports = {
         //     clientsClaim: true,
         //     skipWaiting: true,
         // })
-        new ConsoleOnBuildWebpackPlugin(), // 测试自定义插件
+         // 测试自定义插件
+        new ConsoleOnBuildWebpackPlugin(),
         new ZipWebpackPlugin({
             filename: 'zip/offline'
         }),
@@ -247,15 +251,69 @@ module.exports = {
     devtool: 'source-map',
     /**
      * 1. 可以将 node_modules 中的代码单独打包成一个chunk最终输出
-     * 2. 自动复习多入口的chunk中，若有公共的文件，则会单独打包成一个chunk，不会重复
+     * 2. 自动检查多入口的chunk中，若有公共的文件，则会单独打包成一个chunk，不会重复打包
      */
     optimization: {
         splitChunks: {
-            chunks: 'all'
-        }
+            chunks: 'all',
+            minSize: 30 * 1024, // 抽取的公共的 chunk 最小为 30kb
+            maxSize: 0, // 没有最大限制
+            minChunks: 1, // 要提取的chunk最少被引用1次
+            maxAsyncRequests: 5, // 按需加载时,并行加载的文件的最大请求数量
+            maxInitialRequests: 3, // 入口js文件最大并行请求数量
+            automaticNameDelimiter: '~',
+            // name: true,
+            cacheGroups: { // 分割chunk的组
+                // node_modules文件会被 打包到 名为 venders 组的chunk中 ==> vendors~xxx.js
+                vendors: {
+                    test: /[\\/]node_modules[\\/]]/,
+                    priority: -10, // 优先级
+                }
+            },
+        },
+        /* 将当前模块的记录其他模块的hash单独打包为一个文件 runtime
+         * 作用是:   a.js ==> (b.js, c.js)  d.js ==> (b.js, c.js)
+         *          修改 b 与 c 中文件的时候，a.js 与 d.js 中用于引用 b.js,c.js 的代码都不用改动
+         * 生产中:   防止子模块修改了，父亲文件的生产环境缓存就直接因为重新打包而失效了
+         */
+        runtimeChunk: {
+            name: entrypoint => `runtime-${entrypoint.name}`
+        },
+        minimizer: [
+            // // 配置生产环境的压缩方案
+            // new TerserWebpackPlugin({
+            //     cache: true, // 开启缓存
+            //     parallel: true, // 开启多进程打包
+            //     // sourcemap: true, // 启动source-map
+            // })
+        ]
     },
     // 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
     // externals: {
     //     jquery: 'jQuery'
     // }
+
+    // 配置webpack解析模块规则
+    resolve: {
+        // 配置解析路径别名
+        alias: {
+            $components: path.resolve(__dirname, 'src/components'),
+            $src: path.resolve(__dirname, 'src')
+        },
+        // 配置省略文件路径额后缀名
+        extensions: ['.js', '.json', 'jsx', 'css'],
+        modules: [path.resolve(__dirname, 'node_modules')] // 告诉webpack内核我们的依赖在哪里？节省时间
+    },
+    cache: {
+        type: 'filesystem',
+        buildDependencies: {
+            config: [__filename]
+        }
+    }
 }
+
+/* webpack 5
+ * 1. tree shaking 更加强大
+ * 2. 通过持久缓存提高构建的性能
+ * 3. 允许支持输出模块为 esmodule2015
+ */

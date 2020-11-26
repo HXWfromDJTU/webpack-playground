@@ -10,7 +10,7 @@ module.exports = {
         vue: ['vuetify', 'vue', 'vue-router', 'vuex']
     },
     output: {
-        filename: '[name].js',
+        filename: '[name]_dll_.js',
         path: path.resolve(__dirname, 'dll'),
         library: '[name]_[hash:5]', // 
         libraryTarget: 'window' // library对外暴露的方式
